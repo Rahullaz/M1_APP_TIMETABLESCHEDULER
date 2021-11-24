@@ -13,7 +13,6 @@ typedef struct course
   int allsub;
   int breaks;
  }course co[20];
-
 /***********************************************/
 typedef struct teach
  {
@@ -31,7 +30,6 @@ typedef struct teach
   busy[10];
  }
  busy[10];
- 
  }teach th[20];
 /***********************************************/
 typedef struct room
@@ -58,7 +56,6 @@ typedef struct room
  lunch[2];  
  }room ro[20];
 /***********************************************/
-
 typedef struct tmpsub
  {
  struct
@@ -114,7 +111,6 @@ typedef struct fitch
  fitch[20];
  }
  fitch[20];
-
 /***********************************************/
 long int crs,tch,room,dys,lects,tmptch,tmproom,set,settmp,done;
 /***********************************************/
@@ -230,12 +226,9 @@ void save(int x)
                                      {
                                       strcpy(tmptchr[i].tmptchr[j].tmptchr[k].tmptchr,th[co[i].ctchr[x]].name);
                                       strcpy(tmpsub[i].tmpsub[j].tmpsub[k].tmpsub,co[i].subject[x]);
-
                                       co[i].creadit[x]--;
-
                                       th[co[i].ctchr[x]].busy[j].busy[k].busy=true;
                                       ro[co[i].room].busy[j].busy[k].busy=true;
-
                                       if(j==(lects-1) && k==(dys-1))
                                        set++;
 
