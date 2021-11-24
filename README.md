@@ -226,8 +226,7 @@ void save(int x)
                                      {
                                       strcpy(tmptchr[i].tmptchr[j].tmptchr[k].tmptchr,th[co[i].ctchr[x]].name);
                                       strcpy(tmpsub[i].tmpsub[j].tmpsub[k].tmpsub,co[i].subject[x]);
-                                      co[i].creadit[x]--;
-                                      th[co[i].ctchr[x]].busy[j].busy[k].busy=true;
+                                      co[i].creadit[x]--;th[co[i].ctchr[x]].busy[j].busy[k].busy=true;
                                       ro[co[i].room].busy[j].busy[k].busy=true;
                                       if(j==(lects-1) && k==(dys-1))
                                        set++;
