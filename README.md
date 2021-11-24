@@ -56,7 +56,6 @@ typedef struct room
   lunch[10];
  }
  lunch[2];  
- 
  }room ro[20];
 /***********************************************/
 
@@ -202,106 +201,103 @@ void save(int x)
   strcpy(fisub[i].fisub[j].fisub[k].fisub,tmpsub[i].tmpsub[j].tmpsub[k].tmpsub);
  }
 }
-void generate(int i,int j,int k)
-{
- int x;
- if((i<crs)&&(set>1<crs))
- {
-  if(((j==(lects/2)-1 && (ro[co[i].room].busy[j+1].busy[k].busy==false)) && (ro[co[i].room].lunch[0].lunch[k].lunch==false)) || (j==(lects/2) && (ro[co[i].room].busy[j-1].busy[k].busy==true) && (ro[co[i].room].lunch[1].lunch[k].lunch==false)) )
-  {
-   strcpy(tmptchr[i].tmptchr[j].tmptchr[k].tmptchr," ");
-   strcpy(tmpsub[i].tmpsub[j].tmpsub[k].tmpsub,"lunch");
-   if(j==(lects/2)-1)
-   ro[co[i].room].lunch[0].lunch[k].lunch=true;
-   else
-   ro[co[i].room].lunch[1].lunch[k].lunch=true;
-   co[i].breaks++;
-   
-   generate(i+(j+(k+1)/dys)/lects,(j+(k+1)/dys)%lects,(k+1)%dys);
-   if(!done)
-   {
-   if(j==(lects/2)-1)
-   ro[co[i].room].lunch[0].lunch[k].lunch=false;
-   else
-   ro[co[i].room].lunch[1].lunch[k].lunch=false;
-   co[i].breaks--;}
-   
-   
-  }
-  for(x=0;x<co[i].totsub;x++)
-  {
-   if((th[co[i].ctchr[x]].busy[j].busy[k].busy==false) && (ro[co[i].room].busy[j].busy[k].busy==false) && (co[i].creadit[x]>0) && (co[i].allsub<=((dys*lects)-co[i].breaks)))
-   {
-    strcpy(tmptchr[i].tmptchr[j].tmptchr[k].tmptchr,th[co[i].ctchr[x]].name);
-    strcpy(tmpsub[i].tmpsub[j].tmpsub[k].tmpsub,co[i].subject[x]);
-   
-    co[i].creadit[x]--;
-   
-    th[co[i].ctchr[x]].busy[j].busy[k].busy=true;
-    ro[co[i].room].busy[j].busy[k].busy=true;
-   
-    if(j==(lects-1) && k==(dys-1))
-     set++;
-   
-    if(settmp<set)
-    {
-     settmp=set;
-     save(i);
-    }
-    generate(i+(j+(k+1)/dys)/lects,(j+(k+1)/dys)%lects,(k+1)%dys);
-   
-    if(!done)
-    {
-    if(j==(lects-1) && k==(dys-1)) //backtrack start
-     set--;
-   
-    co[i].creadit[x]++;
-   
-    th[co[i].ctchr[x]].busy[j].busy[k].busy=false;
-    ro[co[i].room].busy[j].busy[k].busy=false;
-   
-    tmptchr[i].tmptchr[j].tmptchr[k].tmptchr[0]='\0';
-    tmpsub[i].tmpsub[j].tmpsub[k].tmpsub[0]='\0';
-    }
-   
-   }
-  }
- 
-  //breaks************
-  if(co[i].allsub<((lects*dys)-(co[i].breaks)))
-  {
+                                    void generate(int i,int j,int k)
+                                  {
+                                   int x;
+                                   if((i<crs)&&(set>1<crs))
+                                   {
+                                     if(((j==(lects/2)-1 && (ro[co[i].room].busy[j+1].busy[k].busy==false)) &&          (ro[co[i].room].lunch[0].lunch[k].lunch==false)) || (j==(lects/2) && (ro[co[i].room].busy[j-1].busy[k].busy==true) && (ro[co[i].room].lunch[1].lunch[k].lunch==false)) )
+                                    {
+                                     strcpy(tmptchr[i].tmptchr[j].tmptchr[k].tmptchr," ");
+                                     strcpy(tmpsub[i].tmpsub[j].tmpsub[k].tmpsub,"lunch");
+                                     if(j==(lects/2)-1)
+                                     ro[co[i].room].lunch[0].lunch[k].lunch=true;
+                                     else
+                                     ro[co[i].room].lunch[1].lunch[k].lunch=true;
+                                     co[i].breaks++;
 
-   co[i].breaks++;
-    strcpy(tmptchr[i].tmptchr[j].tmptchr[k].tmptchr,"Nill");
-    strcpy(tmpsub[i].tmpsub[j].tmpsub[k].tmpsub,"brk");
-   
-   if(j==(lects-1) && k==(dys-1))
-    set++;
-   
-   if(settmp<set)
-   {
-    settmp=set;
-    save(i);
-    //print();
-   }
-   
-   generate(i+(j+(k+1)/dys)/lects,(j+(k+1)/dys)%lects,(k+1)%dys);
-   
-   if(!done)
-   {
-    if(j==(lects-1) && k==(dys-1)) //backtrack start
-    set--;
-    co[i].breaks--;
-   }
-  }
- }
- else
- {
-  done=1; printf("..............................done..........................\n");
+                                     generate(i+(j+(k+1)/dys)/lects,(j+(k+1)/dys)%lects,(k+1)%dys);
+                                     if(!done)
+                                     {
+                                     if(j==(lects/2)-1)
+                                     ro[co[i].room].lunch[0].lunch[k].lunch=false;
+                                     else
+                                     ro[co[i].room].lunch[1].lunch[k].lunch=false;
+                                     co[i].breaks--;}
+                                    for(x=0;x<co[i].totsub;x++)
+                                    {
+                                     if((th[co[i].ctchr[x]].busy[j].busy[k].busy==false) && (ro[co[i].room].busy[j].busy[k].busy==false) && (co[i].creadit[x]>0) && (co[i].allsub<=((dys*lects)-co[i].breaks)))
+                                     {
+                                      strcpy(tmptchr[i].tmptchr[j].tmptchr[k].tmptchr,th[co[i].ctchr[x]].name);
+                                      strcpy(tmpsub[i].tmpsub[j].tmpsub[k].tmpsub,co[i].subject[x]);
 
-  }
-}
-/***************************************/
+                                      co[i].creadit[x]--;
+
+                                      th[co[i].ctchr[x]].busy[j].busy[k].busy=true;
+                                      ro[co[i].room].busy[j].busy[k].busy=true;
+
+                                      if(j==(lects-1) && k==(dys-1))
+                                       set++;
+
+                                      if(settmp<set)
+                                      {
+                                       settmp=set;
+                                       save(i);
+                                      }
+                                      generate(i+(j+(k+1)/dys)/lects,(j+(k+1)/dys)%lects,(k+1)%dys);
+
+                                      if(!done)
+                                      {
+                                      if(j==(lects-1) && k==(dys-1)) //backtrack start
+                                       set--;
+
+                                      co[i].creadit[x]++;
+
+                                      th[co[i].ctchr[x]].busy[j].busy[k].busy=false;
+                                      ro[co[i].room].busy[j].busy[k].busy=false;
+
+                                      tmptchr[i].tmptchr[j].tmptchr[k].tmptchr[0]='\0';
+                                      tmpsub[i].tmpsub[j].tmpsub[k].tmpsub[0]='\0';
+                                      }
+
+                                     }
+                                    }
+
+                                    //breaks************
+                                    if(co[i].allsub<((lects*dys)-(co[i].breaks)))
+                                    {
+
+                                     co[i].breaks++;
+                                      strcpy(tmptchr[i].tmptchr[j].tmptchr[k].tmptchr,"Nill");
+                                      strcpy(tmpsub[i].tmpsub[j].tmpsub[k].tmpsub,"brk");
+
+                                     if(j==(lects-1) && k==(dys-1))
+                                      set++;
+
+                                     if(settmp<set)
+                                     {
+                                      settmp=set;
+                                      save(i);
+                                      //print();
+                                     }
+
+                                     generate(i+(j+(k+1)/dys)/lects,(j+(k+1)/dys)%lects,(k+1)%dys);
+
+                                     if(!done)
+                                     {
+                                      if(j==(lects-1) && k==(dys-1)) //backtrack start
+                                      set--;
+                                      co[i].breaks--;
+                                     }
+                                    }
+                                   }
+                                   else
+                                   {
+                                    done=1; printf("..............................done..........................\n");
+
+                                    }
+                                  }
+                                  /***************************************/
 void print()
 {
  int i,j,k;
@@ -337,5 +333,4 @@ int main()
  generate(0,0,0);
  print();
  return 0;
-
 }
