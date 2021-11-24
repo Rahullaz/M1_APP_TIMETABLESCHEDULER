@@ -1,10 +1,8 @@
-
-
 #include<stdio.h>
 #include<string.h>
 #include<stdbool.h>
 void print();
-struct course
+typedef struct course
  {
   char name[20];
   char subject[20][15];
@@ -14,11 +12,10 @@ struct course
   int ctchr[20];
   int allsub;
   int breaks;
- };
- struct course co[20];
+ }course co[20];
 
 /***********************************************/
-struct teach
+typedef struct teach
  {
   char name[20];
   int sub[11];
@@ -35,10 +32,9 @@ struct teach
  }
  busy[10];
  
- };
- struct teach th[20];
+ }teach th[20];
 /***********************************************/
-struct room
+typedef struct room
  {
   char room[10];
   int allsub;
@@ -61,10 +57,10 @@ struct room
  }
  lunch[2];  
  
- };struct room ro[20];
+ }room ro[20];
 /***********************************************/
 
-struct tmpsub
+typedef struct tmpsub
  {
  struct
  {
@@ -78,7 +74,7 @@ struct tmpsub
  }
  tmpsub[20];
 /***********************************************/
-struct tmptchr
+typedef struct tmptchr
  {
  struct
  {
@@ -92,7 +88,7 @@ struct tmptchr
  }
  tmptchr[20];
 /***********************************************/
-struct fisub
+typedef struct fisub
  {
  struct
  {
@@ -106,7 +102,7 @@ struct fisub
  }
  fisub[20];
 /***********************************************/
-struct fitch
+typedef struct fitch
  {
  struct
  {
@@ -192,11 +188,7 @@ void input()
    getch();
    exit(0);
   }
- 
- 
  }
-
-
 }
 /************************/
 void save(int x)
