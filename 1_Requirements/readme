@@ -27,12 +27,12 @@ How:
 	Using an application to schedule every hour.
 High level requirements
 id  description                             status
-1   Changing the slot and giving to others  implemented
+1   getting details			    implemeted
 2   Blacklisting of specific time by faculty implemented
 
 low level requirements
 id    description                           status
-1     Login page                            implemented
+1     displaying in order                   implemented
 2     Notification to users                 implemented
 
 
