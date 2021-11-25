@@ -1,4 +1,7 @@
 #include<stdio.h>
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/b455ab1686fb4be7836bed9101a19d7b)](https://app.codacy.com/gh/Rahullaz/M1_APP_TIMETABLESCHEDULER?utm_source=github.com&utm_medium=referral&utm_content=Rahullaz/M1_APP_TIMETABLESCHEDULER&utm_campaign=Badge_Grade_Settings)
+
 #include<string.h>
 #include<stdbool.h>
 void print();
